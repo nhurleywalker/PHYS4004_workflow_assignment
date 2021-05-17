@@ -1,2 +1,6 @@
 work/*
 .nextflow*
+*trace.txt*
+*report.html*
+*timeline.html*
+dag.dot*
