@@ -97,4 +97,6 @@ Careful not to delete all your files in the process!
       - A graph of the workflow (`final_dag.png`) to demonstrate that the workflow is being executed as intended.
    1. Analysis:
       - Review the `final_report.html` and comment on the resource usage for the three different tasks. What areas of improvement can you identify?
+      
+1. Email your solutions to [Paul Hancock](mailto:paul.hancock@curtin.edu.au), by ?
  
