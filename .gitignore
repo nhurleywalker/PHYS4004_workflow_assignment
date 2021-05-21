@@ -3,4 +3,8 @@ work/*
 *trace.txt*
 *report.html*
 *timeline.html*
-dag.dot*
+*dag.dot*
+*dag.png*
+answers.nf
+.idea
+results/*
