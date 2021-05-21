@@ -1,7 +1,7 @@
 #! /usr/bin/env nextflow
 
-version='0.1'
-date='today'
+version='0.1' // your submitted version should be 1.0
+date='today'  // update to the date that you last changed this file
 author="Paul Hancock" // Change to your name
 
 log.info """\
@@ -16,15 +16,19 @@ log.info """\
          """
          .stripIndent()
 
-seeds = Channel.of(5..25)
-ncores = Channel.of(1,2)
+seeds = Channel.of(5, 10)
+ncores = Channel.of(1, 2)
 
 // Create the "cross product" of our two channels into one channel of tuples
 // if seeds/cores are (5,10) and (1,2) then this new channel should consist of
 // (5,1), (5,2), (10,1), (10,2). Tip. Use input_ch.view() to print the channel
 // contents before moving to the next step
-//input_ch = 
-input_ch = seeds.combine(ncores)
+input_ch =
+
+input_ch.view()
+
+// comment out the rest of the code just for testing
+/*
 
 process find {
 
@@ -32,9 +36,9 @@ process find {
         tuple(val(seed), val(cores)) from input_ch
         // the following images are constant across all versions of this process
         // so just use a 'static' or 'ad hoc' channel
-        path(image) from file(params.image)
-        path(bkg) from file(params.bkg)
-        path(rms) from file(params.rms)
+        path(image) from ?
+        path(bkg) from ?
+        path(rms) from ?
 
         output:
         file('*.csv') into files_ch
@@ -49,12 +53,13 @@ process find {
         """
 }
 
+
 process count {
 
         input:
         // The input should be all the files provided by the 'find' process
-        // path files from ? 
-        path(files) from files_ch.collect()
+        // they are provided through the files_ch channel
+        path(files) from ?
 
         output:
         file('results.csv') into counted_ch
@@ -75,7 +80,6 @@ process count {
         '''
 }
 
-
 process plot {
         input:
         path(table) from counted_ch
@@ -83,16 +87,8 @@ process plot {
         output:
         file('*.png') into final_ch
 
-        cpus 4
-        
-        // currently this script creates a plot for cores=1
-        // Write a bash script to identify what values of cores
-        // exist in the input table, and then run the plotting
-        // for each of these in parallel.
-        // tail, tr, awk, uniq, xargs
         script:
         """
-        tail -n+2 ${table} | tr ',' ' ' | awk '{print \$2}' | sort -u | xargs -n1 -I % -P4 \
-        python ${baseDir}/plot_completeness.py --cores=% --infile=${table} --outfile=cores_%.png
         """
 }
+*/
