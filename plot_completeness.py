@@ -3,6 +3,7 @@
 
 import matplotlib
 from matplotlib import pyplot
+import numpy as np
 import argparse
 import sys
 
@@ -35,19 +36,24 @@ def plot(infile, outfile,
     # read the csv file
     # select only the rows that have the required number of cores
     # remember that the first line a header line and should be skipped
-    for line in open(infile).readlines():
+    for line in open(infile).readlines()[1:]:
         # extract the required data
-        pass
+        s,c,n = map(int, line.split(','))
+        if c == cores:
+            seed.append(s)
+            nsrc.append(n)
     # sort the data as there is no guarantee that the rows are in order of 'seed'
+    order = np.argsort(seed)
+    seed = np.array(seed)[order]
+    nsrc = np.array(nsrc)[order]
 
     fig = pyplot.figure(figsize=(8,5))
     ax = fig.add_subplot(1,1,1)
     ## create a plot with x=seed, y=nsrc
-    # ax.plot(x,y)
+    ax.plot(seed,nsrc)
     ## put appropriate labels on the plot
-    # ax.set_xlabel()
-    # ax.set_ylabel()
-
+    ax.set_xlabel('Seed (SNR)')
+    ax.set_ylabel('Sources found')
     pyplot.savefig(outfile)
     return
 
