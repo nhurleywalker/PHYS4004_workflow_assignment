@@ -22,6 +22,23 @@ The simulated images include sources with an SNR of between 5 and 100.
 
 
 ### Part 1 - Initialisation
+Normally we would run Nextflow from one of the head nodes (or loging nodes) of Zeus, and let Nextflow submit jobs to the SLURM scheduler to manage system resources.
+In order to provide a fast development loop for you, the tasks that are to be run are fairly light weight (few cores, low RAM, and run times of a few mins or less).
+Due to the short amount of time taken to run most of these tasks we will be running Nextflow directly from a compute node.
+To do this you should run:
+```
+> salloc -M zeus -p workq -P courses0100 -t 6:00:00
+> module load singularity nextflow
+```
+which will give you a 6hour interactive job on Zeus.
+The workflow (when complete) should run start to finish in around 10 mins only.
+[Remember to `logut` (or Ctrl+D) when you are done with the node to return the resources back to the pool].
+
+To run Nextflow use the 'hpc' profile so that you run the various python codes within a container:
+```
+> nextflow -C nextflow.config run main.nf -profile hpc
+```
+
 
 1. Customise `main.nf` to use your own name/version/date,
 1. There are two initial channels defined, one for the number of cores, and one for the seed SNR ratio.
@@ -63,7 +80,7 @@ Explain what the following Bash commands are doing:
 This process takes only one input (`results.csv`) and generates a plot of number of sources found as a function of the seed signal to noise ratio.
 The script `plot_completeness.py` can do the plotting for you.
 For this part of the assignment you should create the plot just for the case `cores=1`.
-1. Once you have a version of the *plot* process will create plots for the case `cores=1`, expand this to create a new plot for each of the different cores values that are within the results.csv file.
+1. Once you have a version of the *plot* process will create plots for the case `cores=1`, expand this to create a new plot for each of the different cores values that are within the `results.csv` file.
 The values for `cores` should be obtained by inspecting the `results.csv` file.
 To avoid creating many small jobs we will do multiple plots within this one job in two ways:
    1. A bash `for` loop, to do the work in serial;
@@ -72,9 +89,9 @@ To avoid creating many small jobs we will do multiple plots within this one job 
 ### Part 4 - Execution
 Now that you have a completed workflow that produces a few basic plots, we will now do a "full run".
 Indicate that this is the final run by changing the tag for this run.
-Eg: `nextflow run -C nextflow.confing main.nf -profile desktop --params.tag=final`
-1. Modify the seed/cores channels so that they include many more values. Seed should run from 5 to 100 in steps of 5.
-This can be done using `seed=Channel.from(5..100).filter{it%5==0}`. Cores should be `(1,2,4,7)`.
+Eg: `nextflow run -C nextflow.confing main.nf -profile hpc --params.tag=final`
+1. Modify the seed/cores channels so that they include many more values. Seed should run from 5 to 95 in steps of 5.
+This can be done using `seed=Channel.from(5..95).filter{it%5==0}`. Cores should be `(1,2,4,7)`.
 
 Note that before you do a full run you should make sure you have a "clean" work space so you might want to delete all the subdirectories within the `work/` directory.
 Careful not to delete all your files in the process!
