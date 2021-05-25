@@ -59,8 +59,9 @@ The images and background files that we require are always the same but we still
 Therefore we need to use a static or *ad hoc* channel for these.
 1. Update the input statement in the `find` process so that the image/background/noise files are staged correctly.
 
-One *aegean* has been run with each of the *seed*/*cores* combinations the resulting output files are collected together into one large file.
+    One *aegean* has been run with each of the *seed*/*cores* combinations the resulting output files are collected together into one large file.
 In order that we may work with only the data required, the `count` process produces some summary stats for later processing.
+
 1. Complete the input statement for the `count` process so that instead of operating on a single file at a time, it will run a single instance of `count` using all the items in `files_ch`.
 
 1. Inspect the `count` process and understand how the `shell` section works. You can do this by running Nextflow, moving into the relevant work directory and then looking at the (hidden) file `.command.sh`, and running the commands by hand in an interactive job.
@@ -118,5 +119,5 @@ Careful not to delete all your files in the process!
    1. Analysis:
       - Review the `final_report.html` and comment on the resource usage for the three different tasks. What areas of improvement can you identify?
       
-1. Email your solutions to [Paul Hancock](mailto:paul.hancock@curtin.edu.au), by ?
+1. Submit your solutions via Blackboard.
  
