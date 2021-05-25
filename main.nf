@@ -64,13 +64,18 @@ process count {
         output:
         file('results.csv') into counted_ch
 
+	// don't use singularity for a bunch of bash commands, it's a waste
+ 	// (and also not all commands work in my container for some reason!)
+	container = ''
+
         // Since we are using bash variables a lot and no nextflow variables
         // we use "shell" instead of "script" so that bash variables don't have
         // to be escaped
         shell:
         '''
         echo "seed,ncores,nsrc" > results.csv
-        for f in $(ls table*.csv); do
+	files=($(ls table*.csv))
+        for f in ${files[@]}; do
           seed_cores=($(echo ${f} | tr '_.' ' ' | awk '{print $2 " " $3}'))
           seed=${seed_cores[0]}
           cores=${seed_cores[1]}
@@ -86,6 +91,8 @@ process plot {
 
         output:
         file('*.png') into final_ch
+
+	cpus 4
 
         script:
         """
