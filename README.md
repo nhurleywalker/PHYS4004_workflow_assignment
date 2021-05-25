@@ -28,6 +28,9 @@ Due to the short amount of time taken to run most of these tasks we will be runn
 To do this you should run:
 ```
 > salloc -M zeus -p workq -P courses0100 -t 6:00:00
+salloc: Granted job allocation <jobid>
+salloc: Waiting for resource configuration
+salloc: Nodes <nid> are ready for job
 > module load singularity nextflow
 ```
 which will give you a 6hour interactive job on Zeus.
