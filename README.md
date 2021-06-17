@@ -59,7 +59,7 @@ The images and background files that we require are always the same but we still
 Therefore we need to use a static or *ad hoc* channel for these.
 1. Update the input statement in the `find` process so that the image/background/noise files are staged correctly.
 
-    One *aegean* has been run with each of the *seed*/*cores* combinations the resulting output files are collected together into one large file.
+    Once *aegean* has been run with each of the *seed*/*cores* combinations the resulting output files are collected together into one large file.
 In order that we may work with only the data required, the `count` process produces some summary stats for later processing.
 
 1. Complete the input statement for the `count` process so that instead of operating on a single file at a time, it will run a single instance of `count` using all the items in `files_ch`.
