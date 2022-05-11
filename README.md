@@ -33,7 +33,7 @@ salloc: Waiting for resource configuration
 salloc: Nodes <nid> are ready for job
 > module load singularity nextflow
 ```
-which will give you a 6hour interactive job on Zeus.
+which will give you a 6hour interactive job on Zeus. (If `-P` doesn't work, use `--account`.
 The workflow (when complete) should run start to finish in around 10 mins only.
 [Remember to `logut` (or Ctrl+D) when you are done with the node to return the resources back to the pool].
 
