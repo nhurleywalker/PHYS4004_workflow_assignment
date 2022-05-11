@@ -45,7 +45,7 @@ To run Nextflow use the 'hpc' profile so that you run the various python codes w
 
 1. Customise `main.nf` to use your own name/version/date,
 1. There are two initial channels defined, one for the number of cores, and one for the seed SNR ratio.
-Create a new channel which chombines these two using the "outer" product.
+Create a new channel which combines these two using the "outer" product.
 That is, if `a=[0,1]` and `b=[2,3]` the outer product of a and b would be `aXb = [[0,2],[0,3],[1,2],[1,3]]` (but not neccessarily in that order).
 Hint: Look at the `combining operators` section of the [Nextflow documentation](https://www.nextflow.io/docs/latest/).
 - Use `input_ch.view()` to check that your new channel contains the desired entries (note that the *order* isn't important, just the content).
