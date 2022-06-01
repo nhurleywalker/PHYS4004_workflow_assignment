@@ -27,14 +27,14 @@ In order to provide a fast development loop for you, the tasks that are to be ru
 Due to the short amount of time taken to run most of these tasks we will be running Nextflow directly from a compute node.
 To do this you should run:
 ```
-> salloc -M magnus -p workq -P courses0100 -t 6:00:00
+> salloc -M magnus -p workq --reservation=courses0100 -t 6:00:00
 salloc: Granted job allocation <jobid>
 salloc: Waiting for resource configuration
 salloc: Nodes <nid> are ready for job
 > module load singularity nextflow
 ```
-which will give you a 6hour interactive job on Magnus. (If `-P` doesn't work, use `--account`.)
-The workflow (when complete) should run start to finish in around 10 mins only.
+which will give you a 6hour interactive job on Magnus. (If `--reservation` doesn't work, use `--account`.)
+The workflow (when complete) should run start to finish in around 10 minutes.
 [Remember to `logut` (or Ctrl+D) when you are done with the node to return the resources back to the pool].
 
 To run Nextflow use the 'hpc' profile so that you run the various python codes within a container:
