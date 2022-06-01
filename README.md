@@ -22,7 +22,7 @@ The simulated images include sources with an SNR of between 5 and 100.
 
 
 ### Part 1 - Initialisation
-Normally we would run Nextflow from one of the head nodes (or loging nodes) of Zeus, and let Nextflow submit jobs to the SLURM scheduler to manage system resources.
+Normally we would run Nextflow from one of the head nodes (or login nodes) of Zeus, and let Nextflow submit jobs to the SLURM scheduler to manage system resources.
 In order to provide a fast development loop for you, the tasks that are to be run are fairly light weight (few cores, low RAM, and run times of a few mins or less).
 Due to the short amount of time taken to run most of these tasks we will be running Nextflow directly from a compute node.
 To do this you should run:
