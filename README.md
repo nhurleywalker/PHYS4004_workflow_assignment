@@ -1,4 +1,4 @@
-# PHYS4004 workflow assignment 2021
+# PHYS4004 workflow assignment 2023
 
 For this assignment you will be constructing a workflow using Nextflow. Some of the work has already been done for you, so please use the templates in this repository as a starting point.
 
