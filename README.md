@@ -22,18 +22,18 @@ The simulated images include sources with an SNR of between 5 and 100.
 
 
 ### Part 1 - Initialisation
-Normally we would run Nextflow from one of the head nodes (or login nodes) of Magnus, and let Nextflow submit jobs to the SLURM scheduler to manage system resources.
+Normally we would run Nextflow from one of the head nodes (or login nodes) of Setonix, and let Nextflow submit jobs to the SLURM scheduler to manage system resources.
 In order to provide a fast development loop for you, the tasks that are to be run are fairly light weight (few cores, low RAM, and run times of a few mins or less).
 Due to the short amount of time taken to run most of these tasks we will be running Nextflow directly from a compute node.
 To do this you should run:
 ```
-> salloc -p workq --reservation=GS-20880 --account=courses0100 -t 6:00:00
+> salloc -p work --account=courses0100 -t 6:00:00
 salloc: Granted job allocation <jobid>
 salloc: Waiting for resource configuration
 salloc: Nodes <nid> are ready for job
 > module load singularity nextflow
 ```
-which will give you a 6hour interactive job on Magnus. (If `--reservation` doesn't work, use `--account`.)
+which will give you a 6hour interactive job on Setonix.
 The workflow (when complete) should run start to finish in around 10 minutes.
 [Remember to `logut` (or Ctrl+D) when you are done with the node to return the resources back to the pool].
 
