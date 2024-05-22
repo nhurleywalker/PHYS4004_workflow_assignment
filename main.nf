@@ -16,6 +16,8 @@ log.info """\
          """
          .stripIndent()
 
+// We should wrap our entire process in a workflow function
+
 seeds = Channel.of(5, 10)
 ncores = Channel.of(1, 2)
 
