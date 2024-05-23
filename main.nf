@@ -2,7 +2,7 @@
 
 version='0.1' // your submitted version should be 1.0
 date='today'  // update to the date that you last changed this file
-author="Paul Hancock" // Change to your name
+author="Natasha Hurley-Walker" // Change to your name
 
 log.info """\
          PHYS4004 workflow assignment
