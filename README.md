@@ -31,7 +31,8 @@ To do this you should run:
 salloc: Granted job allocation <jobid>
 salloc: Waiting for resource configuration
 salloc: Nodes <nid> are ready for job
-> module load singularity nextflow
+> module load singularity/3.11.4-slurm
+> module load nextflow/23.10.0
 ```
 which will give you a 6hour interactive job on Setonix.
 The workflow (when complete) should run start to finish in around 10 minutes.
