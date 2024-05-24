@@ -59,7 +59,7 @@ The inputs to this process are the *seed* and *cores* that are to be used, as we
 The seed/cores combination is passed via the `input_ch` stream that you created in Part 1.
 The images and background files that we require are always the same but we still need to indicate to Nextflow that they need to be staged into the temporary working area.
 Therefore we need to use a static or *ad hoc* channel for these.
-1. Update the input statement in the `find` process so that the image/background/noise files are staged correctly.
+1. Make sure your workflow process is sending the locations to the files to the `find` process so that the image/background/noise files are staged correctly.
 
     Once *aegean* has been run with each of the *seed*/*cores* combinations the resulting output files are collected together into one large file.
 In order that we may work with only the data required, the `count` process produces some summary stats for later processing.
